@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+... This is a order form ..
+<meta charset="UTF-8" />
+           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% endblock %}
+{% block title %}
+Order here
+{% endblock %}
+{% block content %}
+<script type = "text/javascript">
+ myFunction(){
+alert("Order placed Successfully");
+         }
+ </script>
+    <div class= "col-sm-12 col-md-12 col-lg-6">
+<div style="background-color:orange;">
+              <div class="container-fluid">
+                  <h1 align="center">Order Form</h1>
+
+                <form action="order" method="post">
+            <label> <b>Name </b> </label><br>
+                    <input type="text" placeholder="Enter your name" name="name" required><br>
+                    <label> <b>DOB</b></label><br>
+            <input type="date" name="dob" required><br>
+            <label><b> Age</b></label><br>
+            <input type="number" name="age" required><br>
+            <label><b>Gender</b></label><br>
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Female">Female<br>
+             <label><b>E-mail</b></label><br>
+             <input type="email" placeholder="Enter your e-mail" name="email" required><br>
+            <label><b>Address</b></label><br>
+            <textarea name="Address"  rows="3" cols="20">
+            </textarea><br>
+                      <label><b>Department</b></label>
+                    <select name="department" id="department">
+                       {% for cat in links %}
+                        <option>{{cat.name}}</option>
+                        {% endfor %}
+                    </select><br>
+                     <label><b>Course</b></label>
+                    <select name="course" id="course">
+                       {% for co in sub %}
+                        <option>{{co.cname}}</option>
+                        {% endfor %}
+                    </select><br>
+                     <label><b>Choose products you want</b></label><br>
+                    {% for product in datas %}
+                    <input type="checkbox" name="product" id="product" value="product">
+                        {{product.pname}}<br>
+                        {% endfor %}
+                    <br>
+                </form>
+              </div>
+        <center>
+
+            <button class="btn btn-secondary btn-block my_custom_button" onclick="myFunction()">Submit</button>
+
+            <button class="btn btn-secondary btn-block my_custom_button"><a href="logout"></a>Logout</button>
+         </center>
+        </div>
+</div>
+
+{% endblock %}
